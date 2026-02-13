@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                }
+            }
+        }
+    </script>
+    <style>
+        * { font-family: 'Inter', system-ui, sans-serif; }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-gray-900 min-h-screen">
+    
+    <div class="max-w-7xl mx-auto px-6 py-8">
+        
+        <!-- Header -->
+        <header class="flex items-center justify-between mb-8">
+            <div>
+                <h1 class="text-2xl font-semibold tracking-tight">Seller Dashboard</h1>
+                <p class="text-gray-500 text-sm mt-1">North Star Metrics Overview</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <select class="h-10 px-4 pr-10 rounded-lg border border-gray-200 bg-white text-sm font-medium focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent cursor-pointer appearance-none" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 fill=%27none%27 viewBox=%270 0 24 24%27 stroke=%27%236b7280%27%3E%3Cpath stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%272%27 d=%27M19 9l-7 7-7-7%27/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 1rem;">
+                    <option value="seller" selected>Seller</option>
+                    <option value="hera">Hera</option>
+                    <option value="hermes">Hermes</option>
+                    <option value="dolap">Dolap App</option>
+                    <option value="cx">Customer Experience</option>
+                </select>
+            </div>
+        </header>
+
+        <!-- Business KPIs Section -->
+        <section class="mb-6">
+            <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-medium text-gray-500 uppercase tracking-wider">Business KPI'lar</span>
+                <div class="flex items-center gap-2 text-sm text-gray-400">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    Son Güncelleme: 13 Şubat 2026
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                
+                <!-- Total Sellers -->
+                <div class="rounded-xl border border-gray-200 bg-white p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-sm text-gray-500">Total Sellers</span>
+                        <span class="inline-flex items-center gap-1 text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">
+                            <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+                            </svg>
+                            +12.5%
+                        </span>
+                    </div>
+                    <div class="mb-2">
+                        <span class="text-3xl font-semibold">45,678</span>
+                    </div>
+                    <div class="flex items-center gap-1 text-sm text-gray-500">
+                        <span>Toplam aktif satıcı</span>
+                        <svg class="h-4 w-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Onboarding Conversion -->
+                <div class="rounded-xl border border-gray-200 bg-white p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-sm text-gray-500">Onboarding Conversion</span>
+                        <span class="inline-flex items-center gap-1 text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">
+                            <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+                            </svg>
+                            +3.2%
+                        </span>
+                    </div>
+                    <div class="mb-2">
+                        <span class="text-3xl font-semibold">27.01%</span>
+                    </div>
+                    <div class="flex items-center gap-1 text-sm text-gray-500">
+                        <span>Başvurudan aktife</span>
+                        <svg class="h-4 w-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Seller Retention -->
+                <div class="rounded-xl border border-gray-200 bg-white p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-sm text-gray-500">Seller Retention</span>
+                        <span class="inline-flex items-center gap-1 text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">
+                            <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+                            </svg>
+                            +2.1%
+                        </span>
+                    </div>
+                    <div class="mb-2">
+                        <span class="text-3xl font-semibold">87%</span>
+                    </div>
+                    <div class="flex items-center gap-1 text-sm text-gray-500">
+                        <span>Aylık retention oranı</span>
+                        <svg class="h-4 w-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                        </svg>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- UX KPIs Section -->
+        <section class="mb-8">
+            <div class="flex items-center gap-2 mb-4">
+                <span class="text-xs font-medium text-gray-500 uppercase tracking-wider">UX KPI'lar</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                
+                <!-- Step 2 Error Rate -->
+                <div class="rounded-xl border border-gray-200 bg-white p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-sm text-gray-500">Step 2 Error Rate</span>
+                        <span class="inline-flex items-center gap-1 text-xs font-medium text-rose-600 bg-rose-50 px-2 py-1 rounded-full">
+                            <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                            </svg>
+                            -5%
+                        </span>
+                    </div>
+                    <div class="mb-2">
+                        <span class="text-3xl font-semibold">27.22%</span>
+                    </div>
+                    <div class="flex items-center gap-1 text-sm text-gray-500">
+                        <span>Form hata oranı düşüyor</span>
+                        <svg class="h-4 w-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Completion Time -->
+                <div class="rounded-xl border border-gray-200 bg-white p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-sm text-gray-500">Completion Time</span>
+                        <span class="inline-flex items-center gap-1 text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">
+                            <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                            </svg>
+                            -1.2 dk
+                        </span>
+                    </div>
+                    <div class="mb-2">
+                        <span class="text-3xl font-semibold">8.5</span>
+                        <span class="text-lg text-gray-400 ml-1">dk</span>
+                    </div>
+                    <div class="flex items-center gap-1 text-sm text-gray-500">
+                        <span>Ortalama tamamlanma süresi</span>
+                        <svg class="h-4 w-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Drop-off Rate -->
+                <div class="rounded-xl border border-gray-200 bg-white p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-sm text-gray-500">Drop-off Rate</span>
+                        <span class="inline-flex items-center gap-1 text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">
+                            <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                            </svg>
+                            -3%
+                        </span>
+                    </div>
+                    <div class="mb-2">
+                        <span class="text-3xl font-semibold">34%</span>
+                    </div>
+                    <div class="flex items-center gap-1 text-sm text-gray-500">
+                        <span>Terk oranı azalıyor</span>
+                        <svg class="h-4 w-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                        </svg>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- AI Analysis Section -->
+        <section class="mb-8">
+            <div class="rounded-xl border border-gray-200 bg-white overflow-hidden">
+                <div class="p-6 border-b border-gray-100">
+                    <div class="flex items-center gap-3">
+                        <div class="h-10 w-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
+                            <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">AI Özet Analiz</h3>
+                            <p class="text-sm text-gray-500">Powered by Gemini</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="p-6 space-y-4">
+                    <!-- Business Analysis -->
+                    <div class="flex gap-4">
+                        <div class="h-8 w-8 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
+                            <svg class="h-4 w-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-900 mb-1">Business Performansı</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                Toplam satıcı sayısı <span class="font-medium text-gray-900">45,678</span>'e ulaştı (+12.5%). Onboarding conversion <span class="font-medium text-gray-900">%27.01</span> ile hedefin altında ancak yükseliş trendinde. Seller retention <span class="font-medium text-gray-900">%87</span> ile sağlıklı seviyede.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- UX Analysis -->
+                    <div class="flex gap-4">
+                        <div class="h-8 w-8 rounded-lg bg-purple-100 flex items-center justify-center flex-shrink-0">
+                            <svg class="h-4 w-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-900 mb-1">UX Performansı</h4>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                Step 2 error rate <span class="font-medium text-gray-900">%27.22</span> hala yüksek ancak %5 düşüş gösterdi. Completion time <span class="font-medium text-gray-900">8.5 dakikaya</span> indi. Drop-off rate <span class="font-medium text-gray-900">%34</span>'e geriledi - form validasyonlarındaki iyileştirmeler etkili.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendation -->
+                <div class="p-6 bg-amber-50 border-t border-amber-100">
+                    <div class="flex gap-4">
+                        <div class="h-8 w-8 rounded-lg bg-amber-200 flex items-center justify-center flex-shrink-0">
+                            <svg class="h-4 w-4 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-amber-800 mb-1">Öneri</h4>
+                            <p class="text-sm text-amber-900/80 leading-relaxed">
+                                <strong>Öncelik 1:</strong> Step 2'deki validasyon hatalarını azaltmak için inline error mesajlarını iyileştirin. <strong>Öncelik 2:</strong> Completion time'ı 8 dakikanın altına çekmek için form alanlarını sadeleştirin.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trend Chart Section -->
+        <section class="mb-8">
+            <div class="rounded-xl border border-gray-200 bg-white p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h3 class="text-lg font-semibold">Onboarding Conversion Trend</h3>
+                        <p class="text-sm text-gray-500">Performans trendi</p>
+                    </div>
+                    <div class="flex items-center gap-1 bg-gray-100 rounded-lg p-1">
+                        <button class="px-3 py-1.5 text-sm font-medium rounded-md bg-white shadow-sm">Last 30 days</button>
+                        <button class="px-3 py-1.5 text-sm font-medium text-gray-500 rounded-md hover:bg-gray-50">Last 3 months</button>
+                        <button class="px-3 py-1.5 text-sm font-medium text-gray-500 rounded-md hover:bg-gray-50">Last 6 months</button>
+                    </div>
+                </div>
+                <div class="h-[280px]">
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="pt-6 border-t border-gray-100">
+            <div class="flex items-center justify-between text-xs text-gray-400">
+                <p>Dashboard otomatik güncellenmektedir.</p>
+                <p>Powered by N8N + Gemini AI</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        // Trend Chart
+        const ctx = document.getElementById('trendChart').getContext('2d');
+        
+        const gradient = ctx.createLinearGradient(0, 0, 0, 280);
+        gradient.addColorStop(0, 'rgba(249, 115, 22, 0.3)');
+        gradient.addColorStop(1, 'rgba(249, 115, 22, 0.01)');
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Oca 1', 'Oca 8', 'Oca 15', 'Oca 22', 'Oca 29', 'Şub 5', 'Şub 12'],
+                datasets: [{
+                    label: 'Onboarding Conversion',
+                    data: [22.5, 23.1, 24.8, 23.9, 25.2, 26.1, 27.01],
+                    borderColor: 'rgb(249, 115, 22)',
+                    backgroundColor: gradient,
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 0,
+                    pointHoverRadius: 6,
+                    pointHoverBackgroundColor: 'rgb(249, 115, 22)',
+                    pointHoverBorderColor: 'white',
+                    pointHoverBorderWidth: 2,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: 'white',
+                        titleColor: '#1f2937',
+                        bodyColor: '#6b7280',
+                        borderColor: '#e5e7eb',
+                        borderWidth: 1,
+                        padding: 12,
+                        displayColors: false,
+                        callbacks: {
+                            label: function(context) {
+                                return context.parsed.y + '%';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        min: 20,
+                        max: 30,
+                        grid: {
+                            color: '#f3f4f6',
+                            drawBorder: false,
+                        },
+                        ticks: {
+                            color: '#9ca3af',
+                            font: { size: 12 },
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false,
+                            drawBorder: false,
+                        },
+                        ticks: {
+                            color: '#9ca3af',
+                            font: { size: 12 }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
